@@ -400,7 +400,7 @@ var SearchResultsProvider = TrackList.extend({
                 } catch(e) {}
                 self.trigger('error:server', message);
             } else {
-                self.trigger('error:communication', 'Search results are unavailable.');
+                self.trigger('error:communication', '');
             }
         };
         this.on('add', function(models, collection) {

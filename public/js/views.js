@@ -54,7 +54,6 @@ var ModalView = Backbone.View.extend({
 
 var MainView = Backbone.View.extend({
     initialize: function() {
-        this.blockUI = false;
         this.subviews = [new ControlsView(), new ModalView(), new PlaylistView(),
             new SearchBarView(), new SearchResultsView(), new TimebarView(), new VolumeView()];
 
@@ -74,25 +73,15 @@ var MainView = Backbone.View.extend({
 
     el: "body",
     render: function() {
-        rejected = checkBrowser();
-        if (rejected) {
-            $('#header, #wrapper, #footer, #about').html('');
-        }
+        // rejected = checkBrowser();
+        // if (rejected) {
+        //     $('#header, #wrapper, #footer, #about').html('');
+        // }
         _(this.subviews).each(function(subview) {
             subview.render();
         });
         return this;
     },
-
-    toggleBlock: function() {
-        this.blockUI = !this.blockUI;
-        if (this.blockUI) {
-            $.blockUI();
-        } else {
-            $.unblockUI();
-        }
-        return this;
-    }
 });
 
 var ControlsView = Backbone.View.extend({
@@ -198,6 +187,7 @@ var PlaylistTrackView = TrackView.extend({
 
 var SearchTrackView = TrackView.extend({
     addToPlaylist: function() {
+        console.log(this.getModel());
         Playlist.add(this.getModel());
     },
     events: {
@@ -218,7 +208,7 @@ var SearchTrackView = TrackView.extend({
 });
 
 var SearchBarView = Backbone.View.extend({
-    el: $("#search-form"),
+    el: $(".search-form"),
     events: {
         "click #search-site-dropdown a": "selectSite",
         "submit": "search"
@@ -226,7 +216,7 @@ var SearchBarView = Backbone.View.extend({
     search: function(e) {
         e.preventDefault();
         var query = $('#search-query').val();
-        var site = $("#search-site").val();
+        var site = 'url';
         if (query) {
             SearchResults.search(query, site);
         }
@@ -368,6 +358,10 @@ var PlaylistView = Backbone.View.extend({
     }
 });
 
+var AddTrackView = Backbone.View.extend({
+
+});
+
 var SearchResultsView = Backbone.View.extend({
     addAll: function() {
         var tracks = SearchResults.map(function(track) {
@@ -394,22 +388,9 @@ var SearchResultsView = Backbone.View.extend({
                     icon: 'icon-play'
                 }
             });
-            view.render();
-            newRows.push(view.$el);
-            resultsView.rows.push(view);
+            Playlist.add(view.model);
+            $("#Home").hide();
         });
-        var $table = $(this.table);
-        $table.append.apply($table, newRows);
-        $table.find('tr').draggable({
-            // thanks to David Petersen
-            helper: function(event, ui) {
-                var row = $(event.target).closest('tr');
-                return $('<div class="drag-search-result"></div>')
-                    .data("search-index", row.index())
-                    .append(row.find('.uploader-cell').html() + ' &mdash; ' + row.find('.title-cell').html())
-                    .appendTo('body');
-            }
-        }).disableSelection();
     },
     el: $('#search-results-pane'),
     events: {
@@ -422,7 +403,7 @@ var SearchResultsView = Backbone.View.extend({
         this.table = '#search-results tbody';
         SearchResults.on('results:new', this.reset, this);
         SearchResults.on('results', this.append, this);
-        SearchResults.on('results:new results', this.show, this);
+        //SearchResults.on('results:new results', this.show, this);
 
         $("#playlist-tab").droppable({
             accept: '#search-results .ui-draggable',

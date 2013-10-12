@@ -8,9 +8,9 @@ var Playlist = new TrackPlaylist();
 var SearchResults = new SearchResultsProvider();
 $(document).ready(function() {
     window.Router = new PlaylistRouter();
-    var mainView = new MainView().toggleBlock().render();
+    var mainView = new MainView().render();
     Playlist.once('id', function() {
-        mainView.toggleBlock().render();
+        mainView.render();
     });
     Playlist.on('id', function(data) {
         var fragment = (data.id) ? data.id.toString() : "";
