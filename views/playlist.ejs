@@ -10,21 +10,11 @@
             <%- partial('home') %>
         <% } %>
         <header>
-            <div id="header-container" class="container">
-                <div class="row">
-                    <%- partial('partials/search-bar.ejs') %>
-                    <span class="span1 right-column">
-                        <a id="about-button" href onclick="return false;"><strong>Muxamp</strong></a>
-                    </span>
-                </div>
-            </div>
+            <%- partial('partials/search-bar.ejs') %>
         </header>
         <div id="playlist-pane">
             <ol class="playlist" id="tracks">
                 
-            </ol>
-            <ol class="playlist" id="addTracks">
-                <li></li>
             </ol>
             <div id="video-container">
                 <div id="video"></div>
