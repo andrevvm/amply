@@ -9,7 +9,7 @@
         <% if (view === 'home') { %>
             <%- partial('home') %>
         <% } %>
-        <div id="header">
+        <header>
             <div id="header-container" class="container">
                 <div class="row">
                     <%- partial('partials/search-bar.ejs') %>
@@ -18,51 +18,15 @@
                     </span>
                 </div>
             </div>
+        </header>
+        <div id="playlist-pane">
+            <ol class="playlist" id="tracks">
+                
+            </ol>
         </div>
+
         <div id="wrapper" class="container">
-            <div class="row" style="height: 100%;">
-                <div class="span12" style="height: 100%;">
-                    <div id="tabs" class="tabbable tabs-left">
-                        <div id="tab-content" class="tab-content">
-                            <div id="search-results-pane" class="tab-pane">
-                                <div class="tab-actions">
-                                    <span id="add-all" class="btn"><i class="icon-plus"></i> Add All</span>
-                                    <span id="play-all" class="btn"><i class="icon-music"></i> Play All</span>
-                                    <span id="load-more-search-results" class="btn"><i class="icon-refresh"></i> Load More Results</span>
-                                </div>
-                                 <table id="search-results" class="table table-condensed table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th class="action-header"></th>
-                                            <th class="uploader-cell">Uploader</th>
-                                            <th class="title-cell">Title</th>
-                                            <th class="duration-cell">Time</th>
-                                            <th class="link-cell">Link</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div id="playlist-pane" class="tab-pane active">
-                                <table id="tracks" class="table table-condensed table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th class="action-header"></th>
-                                            <th class="uploader-cell">Uploader</th>
-                                            <th class="title-cell">Title</th>
-                                            <th class="duration-cell">Time</th>
-                                            <th class="link-cell">Link</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
             <div class="row">
                 <div class="span4">
                     <div id="video-container">
@@ -78,6 +42,40 @@
             </div>
         </div>
         <div id="player">
+            <section>
+                <div id="controls">
+                    <button>
+                        <span class="i-back" id="previous"></span>
+                    </button>
+                    <button id="play">
+                        <span class="i-play" id="play"></span>
+                    </button>
+                    <button>
+                        <span class="i-skip" id="next"></span>
+                    </button>
+                </div>
+                <div id="display" id="timebar-outer">
+                    <span class="play-time" id="time-elapsed">
+                        0:00
+                    </span>
+                    <span class="track-title">
+                        &nbsp;
+                    </span>
+                    <span class="end-time">
+                        0:00
+                    </span>
+                    <div id="timebar-inner" class="bar"></div>
+                </div>
+                <div id="secondary-controls">
+                    <span class="i-shuffle"></span>
+                    <section id="volume">   
+                        <span class="i-volume"></span>
+                        <div id="slider"></div>  
+                    </section> 
+                </div>
+            </section>
+        </div>
+        <div id="">
             <div id="controls" class="span2 btn-group">
                 <a href onclick="return false;" id="previous" class="btn"><i class="icon-step-backward"></i></a>
                 <a href onclick="return false;" id="play" class="btn"><i class="icon-play"></i></a>
@@ -123,8 +121,6 @@
         </div>
         <script src="js/swfobject.js" type="text/javascript"></script>
         <script src="js/jquery-1.8.3.min.js" type="text/javascript"></script>
-        <script src="js/jquery.reject.min.js" type="text/javascript"></script>
-        <script src="js/detectmobile.js" type="text/javascript"></script>
         <script src="js/jquery.whenall.js" type="text/javascript"></script>
         <script src="js/jquery-ui-1.9.2.custom.min.js" type="text/javascript"></script>
         <script src="js/jQuery.tubeplayer.js" type="text/javascript"></script>

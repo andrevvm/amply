@@ -155,33 +155,27 @@ var TrackView = Backbone.View.extend({
         this.collection = options.collection || {};
     },
     render: function() {
-        var actions = '<div class="actions">' + this.action1 + this.action2 + '</div>';
-        var actionsCell = '<td class="action-cell">' + actions + '</td>';
-        var uploader = '<td class="uploader-cell" ' + getAttribute('title', this.model.get('uploader')) + '>' + this.model.get('uploader') + '</td>';
-        var title = '<td class="title-cell" ' + getAttribute('title', this.model.get('mediaName')) + '>' + this.model.get('mediaName') + '</td>';
+        var playIcon    = '<div class="list-play"><span class="img"><img src="img/poolside.jpg" /></span></div>';
+        var title       = '<span class="title title-cell">' + this.model.get('mediaName') + '</span>';
         var seconds = secondsToString(this.model.get('duration'));
-        var duration = '<td class="duration-cell" ' + getAttribute('title', seconds) + '>' + seconds + '</td>';
-        var link = '<td class="link-cell"><a href="' + this.model.get('permalink') + '"><img src="' + this.model.get('icon') + '" /></a></td>';
-        var innerHtml = actionsCell + uploader + title + duration + link;
+        var duration    = '<span class="time duration-cell">' + seconds + '</span>';
+
+        var innerHtml = playIcon + title + duration;
         this.$el.html(innerHtml);
         return this;
     },
-    tagName: 'tr'
+    tagName: 'li'
 });
 
 var PlaylistTrackView = TrackView.extend({
     events: {
-        'click .play': 'play',
-        'click .remove': 'removeFromPlaylist',
-        'dblclick': 'play'
+        'click': 'play',
     },
     play: function() {
-        var index = this.$el.closest('tr').index();
+        var playing = Playlist.isPlaying(), paused = Playlist.isPaused();
+        var index = this.$el.closest('li').index();
+        
         Playlist.goToTrack(index, true);
-    },
-    removeFromPlaylist: function() {
-        this.remove();
-        Playlist.remove(this.model);
     }
 });
 
@@ -275,7 +269,7 @@ var PlaylistView = Backbone.View.extend({
         if (index == undefined || options.index >= $table.children().length) {
             $table.append.apply($table, newRows);
         } else {
-            var addPoint = $table.find('tr').eq(index);
+            var addPoint = $table.find('li').eq(index);
             addPoint.before.apply(addPoint, newRows);
         }
     },
@@ -287,14 +281,15 @@ var PlaylistView = Backbone.View.extend({
         'click #clear': 'clearPlaylist'
     },
     initialize: function() {
-        this.table = '#tracks tbody';
+        this.table = '#tracks';
         // Unordered list of row views, only meant for internal bookkeeping
         this.rows = [];
+
+        this.player = '#player';
 
         var playlistView = this;
         var startPos;
         $(this.table).sortable({
-            axis: 'y',
             containment: 'document',
             helper: function(event, ui) {
                 try {
@@ -335,10 +330,16 @@ var PlaylistView = Backbone.View.extend({
         }
     },
     setCurrentTrack: function(track, trackNumber) {
-        $(this.table).find('tr')
+        $(this.table).find('li')
             .removeClass('playing')
             .eq(trackNumber)
             .addClass('playing');
+
+        $(this.player).find('.track-title')
+            .text($(this.table).find('.playing .title-cell').text());
+
+        $(this.player).find('.end-time')
+            .text($(this.table).find('.playing .duration-cell').text());
     },
     updateList: function() {
         var count = Playlist.size();
@@ -356,10 +357,6 @@ var PlaylistView = Backbone.View.extend({
     show: function() {
         $("#playlist-tab").tab('show');
     }
-});
-
-var AddTrackView = Backbone.View.extend({
-
 });
 
 var SearchResultsView = Backbone.View.extend({
