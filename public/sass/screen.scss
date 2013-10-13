@@ -7,12 +7,12 @@ $black: #111419;
 $grey: #9B9B9B;
 $light-grey: #E9E9E9;
 $button-grey: #2D3339;
-$blue: #3672E7;
+$blue: #1100E4;
 
 body {
   background: $light-grey;
   padding: 60px 0 80px;
-  font-family: Lato, "Helvetica Neue", Helvetica, sans-serif;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, sans-serif;
 }
 
 #Home {
@@ -57,7 +57,7 @@ header {
 
 #player {
   width: 100%;
-  height: 80px;
+  height: 60px;
   background: $black;
   border-top: 1px solid rgba(255,255,255,0.40);
   position: fixed;
@@ -69,20 +69,21 @@ header {
 }
 
 #controls {
-  margin: 20px 0 20px 0;
+  margin: 12px 0 0 0;
   width: 49%;
   float: left;
 }
 
 #controls {
   button {
+    outline: none;
     float: left;
     position: relative;
     margin: 0;
     border: 0;
     background: $button-grey;
     width: 33.333%;
-    height: 40px;
+    height: 35px;
     font-size: 16px;
     color: white;
     overflow: hidden;
@@ -109,7 +110,7 @@ header {
       background-color: #373D43;
     }
     &:active, &.pressed {
-      height: 39px;
+      height: 34px;
       top: 1px;
       background-color: #24282D;
       box-shadow: inset -1px 0 0 0 rgba(0,0,0,0.20),
@@ -120,7 +121,7 @@ header {
       }
     }
     &.pressed:active {
-      height: 38px;
+      height: 33px;
       top: 2px;
       span {
         top: 2px;
@@ -135,23 +136,24 @@ header {
   }
 }
 
-#display {
+.display {
   display: none;
   font-family: "Orator", monospace;
   float: left;
   width: 47%;
-  height: 40px;
+  height: 35px;
   background: #FFFFE3;
-  margin: 20px 1.04%;
+  margin: 12px 1.04%;
   border-radius: 4px;
-  line-height: 42px;
+  line-height: 37px;
   position: relative;
+  cursor: pointer;
   .play-time {
     float: left;
     display: inline-block;
     width: 13%;
     margin-left: 2%;
-    font-size: 14px;
+    font-size: 12px;
   }
   .track-title {
     float: left;
@@ -162,8 +164,8 @@ header {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    letter-spacing: -0.15em;
-    font-size: 16px;
+    letter-spacing: -0.1em;
+    font-size: 14px;
   }
   .end-time {
     float: left;
@@ -171,14 +173,22 @@ header {
     width: 13%;
     margin-right: 2%;
     text-align: right;
-    font-size: 14px;
+    font-size: 12px;
+  }
+
+  #timebar-inner{
+    border-right: 2px solid blue;
+    height: 100%;
+    position: relative;
+    z-index: 0;
+    border-radius: 4px;
   }
 }
 
 #secondary-controls {
   width: 49%;
   float: right;
-  margin: 20px 0;
+  margin: 12px 0;
   line-height: 42px;
 
   .i-shuffle {
@@ -321,12 +331,11 @@ header {
     }
     &.playing {
       .list-play {
-        width: 10%;
+        width: 20%;
       }
       .title {
-        width: 75%;
+        width: 65%;
         color: $black;
-        font-weight: normal;
       }
     }
   }
@@ -354,7 +363,7 @@ header {
 
 /* Small desktop */
 @media only screen and (min-width : 640px) {
-  #display {
+  .display {
     display: block;
     width: 52%;
   }
@@ -365,7 +374,7 @@ header {
 
 /* Desktop only */
 @media only screen and (min-width : 1030px) {
-  #display {
+  .display {
     width: 66.666%;
   }
   #controls, #secondary-controls {
