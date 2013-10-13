@@ -29,6 +29,7 @@ CREATE TABLE IF NOT EXISTS `Playlists` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `sha256` char(64) CHARACTER SET utf8 NOT NULL,
   `playliststring` mediumtext NOT NULL,
+  `preview` mediumtext NOT NULL,
   `createdAt` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `sha256` (`sha256`)

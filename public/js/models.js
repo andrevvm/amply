@@ -165,10 +165,11 @@ var SoundTrack = Track.extend({
     },
     
     togglePause: function() {
-        var playing = this.isPlaying();
+        var paused = this.isPaused();
         var sound = this.get("sound");
         sound.togglePause();
-        var event = playing ? 'pause' : 'resume';
+        var event = paused ? 'resume' : 'pause';
+        console.log(event);
         triggerEvents(this, event, this, Array.prototype.slice.call(arguments));
     },
     
@@ -212,7 +213,7 @@ var YouTubeTrack = VideoTrack.extend({
     defaults: _.extend({}, VideoTrack.prototype.defaults, {
         siteName: "YouTube",
         siteCode: "ytv",
-        icon: "img/youtube.png",
+        icon: "img/youtube.png"
     }),
     initialize: function() {
         var id = this.get('siteMediaID');
@@ -223,7 +224,9 @@ var YouTubeTrack = VideoTrack.extend({
         })
     },
     destruct: function() {
+        $('#video').appendTo($('#video-container'));
         var self = this, args = Array.prototype.slice.call(arguments);
+        self._playing = false;
         return YouTube.reset().then(function() {
             self._stopped = true;
             triggerEvents(self, 'progress', {percent: 0, time: 0}, Array.prototype.slice.call(arguments));
@@ -231,7 +234,8 @@ var YouTubeTrack = VideoTrack.extend({
         });
     },
     end: function() {
-        var self = this, args = Array.prototype.slice.call(arguments);;
+        var self = this, args = Array.prototype.slice.call(arguments);
+        self._playing = false;
         return this.destruct().then(function() {
             triggerEvents(self, 'end', args);
         });
@@ -252,17 +256,18 @@ var YouTubeTrack = VideoTrack.extend({
         return this.idInPlayer() && !this._stopped && YouTube.state == 2;
     },
     isPlaying: function() {
-        return this.idInPlayer() && !this._stopped && 
-            (YouTube.hasPlayer() || YouTube.state === 1 || this.isPaused() || this.isBuffering());
+        return this._playing;
     },
     isStopped: function() {
         return this._stopped || !this.isPlaying();
     },
     play: function(options) {
         var self = this, args = Array.prototype.slice.call(arguments);
-        if (this.isPaused()) {
+        console.log(self.isPlaying());
+        if (self.isPlaying()) {
             this.togglePause();
         } else {
+            $("#video").appendTo($("#tracks").find('li').eq(Playlist.currentTrack).find('.list-play'));
             YouTube.reset();
             YouTube.load(_.extend({autoPlay: true}, options, {
                 initialVideo: this.get('siteMediaID')
@@ -277,6 +282,7 @@ var YouTubeTrack = VideoTrack.extend({
                 });
                 triggerEvents(self, 'play', args);
             });
+            self._playing = true;
         }
     },
     seek: function(decimalPercent) {
@@ -323,6 +329,7 @@ var YouTubeTrack = VideoTrack.extend({
     },
     stop: function() {
         var self = this, args = Array.prototype.slice.call(arguments);
+        self._playing = false;
         YouTube.pause();
         YouTube.seek(0).then(function() {
             self._stopped = true;
@@ -330,10 +337,12 @@ var YouTubeTrack = VideoTrack.extend({
         });
     },
     togglePause: function() {
+        console.log(YouTube);
         var self = this;
         var state = YouTube.state;
-        var playing = this.isPlaying();
+        var playing = this._playing;
         var dfd = playing ? YouTube.pause() : YouTube.play();
+        playing ? self._playing = false : self._playing = true;
         var event = playing ? 'pause' : 'resume', args = Array.prototype.slice.call(arguments);
         dfd.then(function() {
             self._stopped = false;

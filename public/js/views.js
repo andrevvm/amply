@@ -174,8 +174,11 @@ var PlaylistTrackView = TrackView.extend({
     play: function() {
         var playing = Playlist.isPlaying(), paused = Playlist.isPaused();
         var index = this.$el.closest('li').index();
-        
-        Playlist.goToTrack(index, true);
+        if(playing && Playlist.currentTrack == index) {
+            Playlist.togglePause();
+        } else {
+            Playlist.goToTrack(index, true);
+        }
     }
 });
 
