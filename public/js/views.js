@@ -121,10 +121,10 @@ var ControlsView = Backbone.View.extend({
     },
     setPlayButton: function(playing) {
         if (playing) {
-            $('#play').find('i').removeClass('icon-play').addClass('icon-pause');
+            $('#play').addClass('pressed');
         }
         else {
-            $('#play').find('i').removeClass('icon-pause').addClass('icon-play');
+            $('#play').removeClass('pressed');
         }
     },
     shuffle: function() {
