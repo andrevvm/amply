@@ -13,6 +13,7 @@ var Track = Backbone.Model.extend({
         uploader: "",
         siteName: "",
         mediaName: "",
+        artwork: "",
         type: ""
     },
     destruct: function() {
@@ -87,6 +88,8 @@ var SoundTrack = Track.extend({
     }),
     initialize: function(options) {
 
+        console.log(this.get('type'));
+
         if (options.silent) {
             return;
         }
@@ -104,6 +107,7 @@ var SoundTrack = Track.extend({
             soundManager: sm,
             sound: audio
         });
+
     },
     destruct: function() {
         this.get("sound").destruct();
@@ -199,7 +203,7 @@ var SoundCloudTrack = SoundTrack.extend({
     defaults: _.extend({}, SoundTrack.prototype.defaults, {
         site: "SoundCloud",
         siteCode: "sct",
-        icon: "img/soundcloud_orange_white_16.png"
+        icon: "img/soundcloud_orange_white_16.png",
     })
 });
 
