@@ -293,7 +293,6 @@ var PlaylistView = Backbone.View.extend({
         var playlistView = this;
         var startPos;
         $(this.table).sortable({
-            containment: 'document',
             helper: function(event, ui) {
                 try {
                     var children = ui.children();

@@ -76,6 +76,7 @@ header {
   border-top: 1px solid rgba(255,255,255,0.40);
   position: fixed;
   bottom: 0;
+  z-index: 9000;
 }
 
 #player > section {
@@ -195,6 +196,7 @@ header {
     height: 100%;
     position: relative;
     z-index: 0;
+    transition: width 100ms;
   }
 }
 
@@ -271,6 +273,7 @@ header {
 .playlist {
   position: relative;
   margin: 20px;
+  content: counter-reset(tracks);
   li {
     background: #fff;
     padding: 2%;
@@ -284,14 +287,14 @@ header {
       border-bottom-left-radius: 4px;
       border-bottom: 0;
     }
-
+    
     .title {
       display: inline-block;
       margin-left: 2%;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      width: 80%;
+      width: 82%;
       color: $blue;
       font-size: 12px;
       line-height: 1.2em;
@@ -311,7 +314,7 @@ header {
 
     .list-play {
       border: 0;
-      width: 5%;
+      width: 3%;
       height: auto;
       vertical-align: middle;
       display: inline-block;
@@ -368,8 +371,10 @@ header {
         width: 20%;
       }
       .title {
-        width: 65%;
+        width: 62%;
         color: $black;
+        margin-left: 3%;
+        margin-right: 2%;
       }
     }
   }
@@ -387,7 +392,7 @@ header {
   .playlist {
     li {
       .title {
-        font-size: 16px;
+        font-size: 14px;
       }
     }
   }
@@ -404,7 +409,7 @@ header {
   .playlist {
     li {
       .title {
-        font-size: 20px;
+        font-size: 18px;
       }
     }
   }
