@@ -57,7 +57,7 @@ var Track = Backbone.Model.extend({
         options || (options = {});
         if (mediaData) {
             var proto,
-                params = _(mediaData).pick('siteMediaID', 'url', 'permalink', 'mediaName', 'duration');
+                params = _(mediaData).pick('siteMediaID', 'url', 'permalink', 'mediaName', 'duration','artwork');
             
             params.uploader = mediaData.author;
             switch (mediaData.siteCode) {
@@ -222,9 +222,11 @@ var YouTubeTrack = VideoTrack.extend({
     initialize: function() {
         var id = this.get('siteMediaID');
         var permalink = 'http://www.youtube.com/watch?v=' + id;
+        var artwork = 'http://img.youtube.com/vi/' + id + '/hqdefault.jpg';
         this.set({
             url: permalink,
             permalink: permalink,
+            artwork: artwork
         })
     },
     destruct: function() {
