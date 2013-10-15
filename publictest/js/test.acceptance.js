@@ -76,7 +76,7 @@
     };
     describe('Opening Muxamp', function() {
         it('should have the GUI elements for track search', function() {
-            $('#search-query').size().should.eql(1);
+            $('.search-query').size().should.eql(1);
             $('#search-submit').size().should.eql(1);
             $('#site-selector').size().should.eql(1);
             $('#search-site-dropdown').find('li').size().should.eql(4);
@@ -177,7 +177,7 @@
                     playlists.push(Playlist.id);
                 });
                 testGUIPlaylistAdding(Playlist, SearchResults, done);
-                $('#search-query').val('flaming lips');
+                $('.search-query').val('flaming lips');
                 $('#site-selector').click();
                 $('#site-selector').click().parent().find('ul li:first-child').find('a').click();
                 $('#search-submit').click();
@@ -194,7 +194,7 @@
                     playlists.push(Playlist.id);
                 });
                 testGUIPlaylistAdding(Playlist, SearchResults, done);
-                $('#search-query').val('flaming lips');
+                $('.search-query').val('flaming lips');
                 $('#site-selector').click().parent().find('ul li:nth-child(2)').find('a').click();
                 $('#search-submit').click();
             });

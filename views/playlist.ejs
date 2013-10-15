@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Muxamp</title>
+        <title>Amply</title>
         <%- partial('head') %>
     </head>
     <body>
@@ -10,7 +10,8 @@
             <%- partial('home') %>
         <% } %>
         <header>
-            <%- partial('partials/search-bar.ejs') %>
+            <%- partial('partials/search-bar.ejs',{formId: 'search-bar'}) %>
+            <div class="success">Track Added!</div>
         </header>
         <div id="playlist-pane">
             <ol class="playlist" id="tracks">

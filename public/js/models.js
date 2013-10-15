@@ -28,9 +28,6 @@ var Track = Backbone.Model.extend({
     play: function() {
         triggerEvents(this, 'play', Array.prototype.slice.call(arguments));
     },
-    play: function() {
-        triggerEvents(this, 'play', Array.prototype.slice.call(arguments));
-    },
     seek: function() {
         triggerEvents(this, 'progress', Array.prototype.slice.call(arguments));
     },
@@ -87,8 +84,6 @@ var SoundTrack = Track.extend({
         type: "audio"
     }),
     initialize: function(options) {
-
-        console.log(this.get('type'));
 
         if (options.silent) {
             return;
@@ -173,7 +168,6 @@ var SoundTrack = Track.extend({
         var sound = this.get("sound");
         sound.togglePause();
         var event = paused ? 'resume' : 'pause';
-        console.log(event);
         triggerEvents(this, event, this, Array.prototype.slice.call(arguments));
     },
     
@@ -269,7 +263,6 @@ var YouTubeTrack = VideoTrack.extend({
     },
     play: function(options) {
         var self = this, args = Array.prototype.slice.call(arguments);
-        console.log(self.isPlaying());
         if (self.isPlaying()) {
             this.togglePause();
         } else {
@@ -343,7 +336,6 @@ var YouTubeTrack = VideoTrack.extend({
         });
     },
     togglePause: function() {
-        console.log(YouTube);
         var self = this;
         var state = YouTube.state;
         var playing = this._playing;

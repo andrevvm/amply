@@ -55,7 +55,7 @@ var ModalView = Backbone.View.extend({
 var MainView = Backbone.View.extend({
     initialize: function() {
         this.subviews = [new ControlsView(), new ModalView(), new PlaylistView(),
-            new SearchBarView(), new SearchResultsView(), new TimebarView(), new VolumeView()];
+            new SearchBarView(), new SearchBarHomeView(), new SearchResultsView(), new TimebarView(), new VolumeView()];
 
         var showCommunicationError = function(error) {
             bootbox.alert('Sorry, the server could not be contacted. ' + error);
@@ -187,7 +187,6 @@ var PlaylistTrackView = TrackView.extend({
 
 var SearchTrackView = TrackView.extend({
     addToPlaylist: function() {
-        console.log(this.getModel());
         Playlist.add(this.getModel());
     },
     events: {
@@ -208,14 +207,14 @@ var SearchTrackView = TrackView.extend({
 });
 
 var SearchBarView = Backbone.View.extend({
-    el: $(".search-form"),
+    el: $("#search-bar"),
     events: {
         "click #search-site-dropdown a": "selectSite",
         "submit": "search"
     },
     search: function(e) {
         e.preventDefault();
-        var query = $('#search-query').val();
+        var query = $('.search-query',this.el).val();
         var site = 'url';
         if (query) {
             SearchResults.search(query, site);
@@ -224,7 +223,7 @@ var SearchBarView = Backbone.View.extend({
     },
     selectSite: function(e) {
         var site = $(e.target).html();
-        var oldSiteCode = $("#search-site").val();
+        var oldSiteCode = $(".search-site").val();
         var siteCode = '';
         switch(site) {
             case "YouTube":
@@ -240,13 +239,17 @@ var SearchBarView = Backbone.View.extend({
                 siteCode = "url";
                 break;
         }
-        $("#search-site").val(siteCode);
+        $(".search-site").val(siteCode);
         $("#site-selector").html(site + '&nbsp;<span class="caret"></span>');
-        var query = $('#search-query').val();
+        var query = $('.search-query').val();
         if (query && siteCode != oldSiteCode) {
             SearchResults.search(query, siteCode);
         }
     }
+});
+
+var SearchBarHomeView = SearchBarView.extend({
+    el: $("#search-bar-home")
 });
 
 var PlaylistView = Backbone.View.extend({
@@ -278,6 +281,7 @@ var PlaylistView = Backbone.View.extend({
             var addPoint = $table.find('li').eq(index);
             addPoint.before.apply(addPoint, newRows);
         }
+
     },
     clearPlaylist: function() {
         Playlist.reset();
@@ -323,6 +327,9 @@ var PlaylistView = Backbone.View.extend({
         Playlist.on('tracks', this.append, this);
         Playlist.on('id', this.updateList, this);
         Playlist.on('track', this.setCurrentTrack, this);
+        Playlist.on('play', this.playCurrentTrack, this);
+        Playlist.on('resume', this.playCurrentTrack, this);
+        Playlist.on('pause', this.pauseCurrentTrack, this);
     },
     reset: function(tracks) {
         $(this.table).empty();
@@ -335,16 +342,31 @@ var PlaylistView = Backbone.View.extend({
         }
     },
     setCurrentTrack: function(track, trackNumber) {
-        $(this.table).find('li')
-            .removeClass('playing')
+        $table = $(this.table);
+        $table.find('li')
+            .removeClass('playing playTrack')
             .eq(trackNumber)
             .addClass('playing');
+
+        if(Playlist.isPlaying() && !Playlist.isPaused()) {
+            this.playCurrentTrack();
+        }
+
+        setTimeout(function() {
+            $('body').animate({scrollTop:$('li.playing',$table).offset().top - 20}, 600);
+        },300);
 
         $(this.player).find('.track-title')
             .text($(this.table).find('.playing .title-cell').text());
 
         $(this.player).find('.end-time')
             .text($(this.table).find('.playing .duration-cell').text());
+    },
+    playCurrentTrack: function() {
+        $(this.table).find('li.playing').addClass('playTrack');
+    },
+    pauseCurrentTrack: function() {
+        $(this.table).find('li.playing').removeClass('playTrack');
     },
     updateList: function() {
         var count = Playlist.size();
@@ -380,19 +402,16 @@ var SearchResultsView = Backbone.View.extend({
         var newRows = [];
         _(searchResults).each(function(searchResult) {
             var view = new SearchTrackView({
-                model: searchResult,
-                action1: {
-                    classes: 'search-add-result',
-                    icon: 'icon-plus'
-                },
-                action2: {
-                    classes: 'search-play-result',
-                    icon: 'icon-play'
-                }
+                model: searchResult
             });
             Playlist.add(view.model);
-            $("#Home").hide();
         });
+        $('#Home').hide();
+        $('.success').addClass('show');
+        $('.search-query').val('');
+        setTimeout(function() {
+            $('.success').removeClass('show');
+        },1000);
     },
     el: $('#search-results-pane'),
     events: {
@@ -503,6 +522,8 @@ var VolumeView = Backbone.View.extend({
                 Playlist.setVolume(ui.value);
             }
         });
+
+        $('.ui-slider-handle').removeAttr('href');
 
         Playlist.on('volume', this.updateSymbol, this);
         Playlist.on('mute', function() {

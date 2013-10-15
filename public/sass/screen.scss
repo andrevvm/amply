@@ -1,5 +1,5 @@
 @font-face{font-family:'Orator';src:url('fonts/oratorstd-webfont.eot?') format('eot'),url('fonts/oratorstd-webfont.woff') format('woff'),url('fonts/oratorstd-webfont.ttf') format('truetype'),url('fonts/oratorstd-webfont.svg#webfontlZlKz9CF') format('svg');font-weight:normal;font-style:normal;}
-@import url(http://fonts.googleapis.com/css?family=Lato:400,900);
+@import url(http://fonts.googleapis.com/css?family=Lato:400,700,900);
 @import url("icons.css");
 @import "compass/reset";
 @import "compass/css3";
@@ -7,24 +7,28 @@
 $black: #111419;
 $grey: #9B9B9B;
 $light-grey: #E9E9E9;
-$button-grey: #2D3339;
+$button-grey: #383D47;
+$button-hover: #3E444F;
 $blue: #1100E4;
 $darkest_blue: #1E1E3C;
+$red: #EB2D3E;
+$green: #53C896;
 
 body {
   background: $light-grey;
-  padding: 60px 0 80px;
+  padding: 0 0 140px;
   font-family: Lato, "Helvetica Neue", Helvetica, sans-serif;
 }
 
 input[type=text] {
   width: 100%;
-  padding: 14px 20px;
+  padding: 16px 20px;
   font-size: 16px;
-  border: 1px solid transparent;
   @include border-radius(5px);
+  @include box-sizing(border-box);
   font-family: Lato, "Helvetica Neue", Helvetica, sans-serif;
-  font-weight: 900;
+  font-weight: 700;
+  color: $black;
   text-align: center;
   outline: none;
   &:focus {
@@ -36,6 +40,43 @@ a {
   color: $blue;
   text-decoration: none;
 }
+
+.bootbox.modal {
+  position: fixed;
+  bottom: 60px;
+  left: 0;
+  z-index: 100;
+  background-color: $red;
+  color: #FFF;
+  width: 100%;
+  min-height: 60px;
+  @include box-sizing(border-box);
+  padding: 16px 20px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.5;
+  font-size: 14px;
+  @include transition(all 300ms);
+  @include transition-timing-function(cubic-bezier(.17,.67,.29,.98));
+  .modal-body {
+    display: inline-block;
+  }
+  .modal-footer {
+    display: inline-block;
+    .btn {
+      background: white;
+      line-height: 26px;
+      color: $red;
+      padding: 0px 6px;
+      display: inline-block;
+      @include border-radius(4px);
+      margin-left: 10px;
+    }
+  }
+  &[aria-hidden="true"] {
+    bottom: 0;
+  }
+} 
 
 #Home {
     width: 100%;
@@ -60,9 +101,9 @@ a {
         }
     }
     h2 {
-      font-weight: 400;
+      font-weight: 700;
       letter-spacing: -1px;
-      width: 450px;
+      width: 500px;
       margin: 30px auto 40px;
       font-size: 52px;
       line-height: 1.2em;
@@ -89,13 +130,15 @@ a {
 
 
 header {
-  background: white;
+  background: #FFF;
+  color: $black;
   width: 100%;
   height: 60px;
   box-shadow: 0 0 5px 0 rgba(0,0,0,0.15);
   position: fixed;
-  top: 0;
+  bottom: 60px;
   z-index: 100;
+  overflow: hidden;
 
   section {
     padding: 0 20px;
@@ -119,24 +162,38 @@ header {
 
   input[type=text] {
     width: 100%;
-    padding: 14px 20px;
-    font-size: 16px;
-    border: 1px solid transparent;
-    @include border-radius(5px);
-    font-family: Lato, "Helvetica Neue", Helvetica, sans-serif;
-    font-weight: 900;
-    outline: none;
-    &:focus {
-      outline: none;
-    }
+    padding: 18px 0;
+    font-size: 14px;
+    border: 0;
+    background: white;
+    color: $black;
   }
+
+  .success {
+    width: 100%;
+    height: 100%;
+    background: #53C896;
+    color: #FFF;
+    font-weight: 900;
+    text-align: center;
+    font-size: 14px;
+    line-height: 60px;
+    position: absolute;
+    top: 60px;
+    @include transition(top 300ms);
+    @include transition-timing-function(cubic-bezier(.17,.67,.29,.98));
+    &.show {
+      top: 0px;
+      @include transition-duration(0);
+      @include transition-delay(0);
+    }
+  } 
 }
 
 #player {
   width: 100%;
   height: 60px;
   background: $black;
-  border-top: 1px solid rgba(255,255,255,0.40);
   position: fixed;
   bottom: 0;
   z-index: 1000;
@@ -163,6 +220,7 @@ header {
     width: 33.333%;
     height: 35px;
     font-size: 16px;
+    line-height: 1;
     color: white;
     overflow: hidden;
     cursor: pointer;
@@ -185,7 +243,7 @@ header {
                   inset 1px 0 0 0 rgba(0,0,0,0.30);
     }
     &:hover {
-      background-color: #373D43;
+      background-color: $button-hover;
     }
     &:active, &.pressed {
       height: 34px;
@@ -266,7 +324,7 @@ header {
 #secondary-controls {
   width: 49%;
   float: right;
-  margin: 12px 0;
+  margin: 10px 0;
   line-height: 42px;
 
   .i-shuffle {
@@ -341,6 +399,10 @@ header {
     background: #fff;
     padding: 2%;
     border-bottom: 1px solid $light-grey;
+    font-size: 12px;
+    cursor: pointer;
+
+    @include transition(font-size 200ms);
     &:first-child {
       border-top-right-radius: 4px;
       border-top-left-radius: 4px;
@@ -359,15 +421,14 @@ header {
       text-overflow: ellipsis;
       width: 79%;
       color: $blue;
-      font-size: 12px;
       line-height: 1.2em;
       font-weight: 900;
       vertical-align: middle;
       @include transition(all 200ms);
-      cursor: pointer;
     }
 
     .time {
+      font-size: 80%;
       display: inline-block;
       margin-left: 1%;
       width: 10%;
@@ -454,6 +515,17 @@ header {
     &.playing {
       .list-play {
         width: 20%;
+      }
+      .title {
+        width: 62%;
+        margin-left: 3%;
+        margin-right: 2%;
+        font-size: 1.2em;
+      }
+      &.playTrack {
+        .title {
+          color: $black;
+        }
         img {
           opacity: 0;
         }
@@ -461,12 +533,6 @@ header {
         .img:before {
           display: none;
         }
-      }
-      .title {
-        width: 62%;
-        color: $black;
-        margin-left: 3%;
-        margin-right: 2%;
       }
     }
 
@@ -489,9 +555,7 @@ header {
   }
   .playlist {
     li {
-      .title {
-        font-size: 14px;
-      }
+      font-size: 16px;
     }
   }
 }
@@ -506,9 +570,7 @@ header {
   }
   .playlist {
     li {
-      .title {
-        font-size: 18px;
-      }
+      font-size: 20px;
     }
   }
 }
