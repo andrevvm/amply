@@ -101,13 +101,6 @@ var ControlsView = Backbone.View.extend({
             this.setPlayButton(false);
         }
 
-        $( "#slider" ).slider();
-          var slider = $('#slider');
-          slider.slider({
-              range: "min",
-              value: 35
-          });
-
         Playlist.on('play resume', showPause, this);
         Playlist.on('pause stop', showPlay, this);
     },
@@ -505,7 +498,7 @@ var VolumeView = Backbone.View.extend({
             range: "min",
             min: 0,
             max: 100,
-            value: 50,
+            value: 80,
             slide: function(event, ui) {
                 Playlist.setVolume(ui.value);
             }

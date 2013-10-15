@@ -9,6 +9,7 @@ $grey: #9B9B9B;
 $light-grey: #E9E9E9;
 $button-grey: #2D3339;
 $blue: #1100E4;
+$darkest_blue: #1E1E3C;
 
 body {
   background: $light-grey;
@@ -16,14 +17,73 @@ body {
   font-family: Lato, "Helvetica Neue", Helvetica, sans-serif;
 }
 
+input[type=text] {
+  width: 100%;
+  padding: 14px 20px;
+  font-size: 16px;
+  border: 1px solid transparent;
+  @include border-radius(5px);
+  font-family: Lato, "Helvetica Neue", Helvetica, sans-serif;
+  font-weight: 900;
+  text-align: center;
+  outline: none;
+  &:focus {
+    outline: none;
+  }
+}
+
+a {
+  color: $blue;
+  text-decoration: none;
+}
+
 #Home {
     width: 100%;
     height: 100%;
     position: absolute;
     background: $light-grey;
-    z-index: 1000;
+    z-index: 2000;
     top: 0;
     left: 0;
+    text-align: center;
+    h1 {
+      width: 55px;
+      height: 64px;
+      background: url(../img/logo.png) no-repeat top left;
+      text-indent: -9000px;
+      margin: 60px auto 20px;
+    }
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+        h1 {
+          background-image: url(../img/logo@2x.png);
+          background-size: 100%;
+        }
+    }
+    h2 {
+      font-weight: 400;
+      letter-spacing: -1px;
+      width: 450px;
+      margin: 30px auto 40px;
+      font-size: 52px;
+      line-height: 1.2em;
+      color: $darkest_blue;
+    }
+
+    input {
+      width: 50%;
+      min-width: 450px;
+      margin: 0 auto;
+      background: white;
+      font-size: 20px;
+      text-align: center;
+      border: 0;
+      @include box-shadow(inset 0px 1px 2px 0px rgba(0,0,0,0.20));
+    }
+
+    p {
+      font-size: 16px;
+      margin: 40px;
+    }
 }
 
 
@@ -79,7 +139,7 @@ header {
   border-top: 1px solid rgba(255,255,255,0.40);
   position: fixed;
   bottom: 0;
-  z-index: 9000;
+  z-index: 1000;
 }
 
 #player > section {
@@ -232,14 +292,14 @@ header {
       text-align: center;
     }
 
-    #slider {
+    .slider {
       display: inline-block;
       height: 16px;
       width: 76%;
       background: #505050;
       box-shadow: inset 0 -1px 0 0 rgba(255,255,255,0.2),
                   inset 0 1px 0 0 rgba(0,0,0,0.2);
-      @include border-radius(8px);
+      @include border-radius(10px);
       position: relative;
       top: 2px;
     }
@@ -256,12 +316,12 @@ header {
         outline: none;  
         top: -4px;  
         margin-left: -12px;  
-        @include border-radius(8px);
+        @include border-radius(12px);
         box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.2),
                     inset 0 -1px 0 0 rgba(0,0,0,0.2);
     }
     .ui-slider-range {  
-        background: #3672E7;  
+        background: #FFF;  
         position: absolute;  
         border: 0;
         top: 0;  
@@ -339,7 +399,7 @@ header {
       top: 0;
       iframe {
         width: 180%;
-        height: 102%;
+        height: 101.5%;
         position: relative;
         left: -40%;
         margin-top: 0;
