@@ -158,7 +158,7 @@ var TrackView = Backbone.View.extend({
         var playIcon    = '<div class="list-play"><span class="img" style="background-image:url(' + this.model.get('artwork') + ')"><img src="img/play-icon.png"/></span></div>';
         var title       = '<span class="title title-cell">' + this.model.get('mediaName') + '</span>';
         var seconds = secondsToString(this.model.get('duration'));
-        var duration    = '<span class="time duration-cell">' + seconds + '</span>';
+        var duration    = '<span class="time duration-cell"><img src="' + this.model.get('icon') + '" />' + seconds + '</span>';
 
         var innerHtml = playIcon + title + duration;
         this.$el.html(innerHtml);

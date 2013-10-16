@@ -555,6 +555,25 @@ header {
   }
 }
 
+footer {
+  text-align: center;
+  font-size: 12px;
+  color: #D4D4D4;
+  margin: 50px 0 20px;
+  @include transition(color 200ms ease-in-out);
+  &:hover {
+    color: $grey;
+    a {
+      color: $grey;
+    }
+  }
+  a {
+    color: #D4D4D4;
+    text-decoration: underline;
+    @include transition(color 200ms ease-in-out);
+  }
+}
+
 /* Small desktop */
 @media only screen and (min-width : 640px) {
   .display {

@@ -715,37 +715,66 @@ header .success.show {
   background-size: auto 140%;
 }
 
+/* line 558, ../sass/screen.scss */
+footer {
+  text-align: center;
+  font-size: 12px;
+  color: #D4D4D4;
+  margin: 50px 0 20px;
+  -webkit-transition: color 200ms ease-in-out;
+  -moz-transition: color 200ms ease-in-out;
+  -o-transition: color 200ms ease-in-out;
+  transition: color 200ms ease-in-out;
+}
+/* line 564, ../sass/screen.scss */
+footer:hover {
+  color: #9b9b9b;
+}
+/* line 566, ../sass/screen.scss */
+footer:hover a {
+  color: #9b9b9b;
+}
+/* line 570, ../sass/screen.scss */
+footer a {
+  color: #D4D4D4;
+  text-decoration: underline;
+  -webkit-transition: color 200ms ease-in-out;
+  -moz-transition: color 200ms ease-in-out;
+  -o-transition: color 200ms ease-in-out;
+  transition: color 200ms ease-in-out;
+}
+
 /* Small desktop */
 @media only screen and (min-width: 640px) {
-  /* line 560, ../sass/screen.scss */
+  /* line 579, ../sass/screen.scss */
   .display {
     display: block;
     width: 52%;
   }
 
-  /* line 564, ../sass/screen.scss */
+  /* line 583, ../sass/screen.scss */
   #controls, #secondary-controls {
     width: 22.9%;
   }
 
-  /* line 568, ../sass/screen.scss */
+  /* line 587, ../sass/screen.scss */
   .playlist li {
     font-size: 16px;
   }
 }
 /* Desktop only */
 @media only screen and (min-width: 1030px) {
-  /* line 576, ../sass/screen.scss */
+  /* line 595, ../sass/screen.scss */
   .display {
     width: 66.666%;
   }
 
-  /* line 579, ../sass/screen.scss */
+  /* line 598, ../sass/screen.scss */
   #controls, #secondary-controls {
     width: 15.625%;
   }
 
-  /* line 583, ../sass/screen.scss */
+  /* line 602, ../sass/screen.scss */
   .playlist li {
     font-size: 20px;
   }
