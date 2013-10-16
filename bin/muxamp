@@ -6,6 +6,6 @@ var muxamp = require('../lib/server'),
 var app = muxamp.getApplication(),
     port = config.get('muxamp:port');
     ip = config.get('muxamp:ip')
-app.listen(ip, port, function() {
+app.listen(port, ip, function() {
     console.log("Server started, port", port);
 });
