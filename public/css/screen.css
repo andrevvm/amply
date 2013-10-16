@@ -523,7 +523,7 @@ header .success.show {
 .playlist {
   position: relative;
   margin: 20px;
-  content: counter-reset(tracks);
+  counter-reset: track-count 0;
 }
 /* line 399, ../sass/screen.scss */
 .playlist li {
@@ -565,7 +565,16 @@ header .success.show {
   -o-transition: all 200ms;
   transition: all 200ms;
 }
-/* line 431, ../sass/screen.scss */
+/* line 429, ../sass/screen.scss */
+.playlist li .title:before {
+  display: inline-block;
+  margin-right: 1em;
+  content: counter(track-count);
+  counter-increment: track-count;
+  color: #9b9b9b;
+  font-weight: 400;
+}
+/* line 439, ../sass/screen.scss */
 .playlist li .time {
   font-size: 80%;
   display: inline-block;
@@ -575,7 +584,7 @@ header .success.show {
   color: #9b9b9b;
   vertical-align: middle;
 }
-/* line 441, ../sass/screen.scss */
+/* line 449, ../sass/screen.scss */
 .playlist li .list-play {
   border: 0;
   width: 6%;
@@ -597,7 +606,7 @@ header .success.show {
   line-height: 0;
   cursor: pointer;
 }
-/* line 456, ../sass/screen.scss */
+/* line 464, ../sass/screen.scss */
 .playlist li #video {
   width: 100%;
   height: 100%;
@@ -605,7 +614,7 @@ header .success.show {
   left: 0;
   top: 0;
 }
-/* line 462, ../sass/screen.scss */
+/* line 470, ../sass/screen.scss */
 .playlist li #video iframe {
   width: 180%;
   height: 101.5%;
@@ -613,7 +622,7 @@ header .success.show {
   left: -38%;
   margin-top: 0;
 }
-/* line 469, ../sass/screen.scss */
+/* line 477, ../sass/screen.scss */
 .playlist li #video:after {
   content: "";
   width: 100%;
@@ -625,7 +634,7 @@ header .success.show {
   background-size: 100%;
   z-index: 10;
 }
-/* line 482, ../sass/screen.scss */
+/* line 490, ../sass/screen.scss */
 .playlist li .list-play .img {
   display: inline-block;
   width: 100%;
@@ -639,7 +648,7 @@ header .success.show {
   -o-border-radius: 200px;
   border-radius: 200px;
 }
-/* line 490, ../sass/screen.scss */
+/* line 498, ../sass/screen.scss */
 .playlist li .list-play .img:after {
   content: "";
   width: 100%;
@@ -659,11 +668,11 @@ header .success.show {
   -o-border-radius: 200px;
   border-radius: 200px;
 }
-/* line 503, ../sass/screen.scss */
+/* line 511, ../sass/screen.scss */
 .playlist li .list-play .img:hover:after {
   background: rgba(0, 0, 0, 0);
 }
-/* line 509, ../sass/screen.scss */
+/* line 517, ../sass/screen.scss */
 .playlist li .list-play img {
   display: block;
   width: 100%;
@@ -677,66 +686,66 @@ header .success.show {
   position: relative;
   z-index: 10;
 }
-/* line 519, ../sass/screen.scss */
+/* line 527, ../sass/screen.scss */
 .playlist li.playing .list-play {
   width: 20%;
 }
-/* line 522, ../sass/screen.scss */
+/* line 530, ../sass/screen.scss */
 .playlist li.playing .title {
   width: 62%;
   margin-left: 3%;
   margin-right: 2%;
   font-size: 1.2em;
 }
-/* line 529, ../sass/screen.scss */
+/* line 537, ../sass/screen.scss */
 .playlist li.playing.playTrack .title {
   color: #111419;
 }
-/* line 532, ../sass/screen.scss */
+/* line 540, ../sass/screen.scss */
 .playlist li.playing.playTrack img {
   opacity: 0;
 }
-/* line 536, ../sass/screen.scss */
+/* line 544, ../sass/screen.scss */
 .playlist li.playing.playTrack .img:after,
 .playlist li.playing.playTrack .img:before {
   display: none;
 }
-/* line 543, ../sass/screen.scss */
+/* line 551, ../sass/screen.scss */
 .playlist li.ytv .list-play .img {
   background-size: auto 140%;
 }
 
 /* Small desktop */
 @media only screen and (min-width: 640px) {
-  /* line 552, ../sass/screen.scss */
+  /* line 560, ../sass/screen.scss */
   .display {
     display: block;
     width: 52%;
   }
 
-  /* line 556, ../sass/screen.scss */
+  /* line 564, ../sass/screen.scss */
   #controls, #secondary-controls {
     width: 22.9%;
   }
 
-  /* line 560, ../sass/screen.scss */
+  /* line 568, ../sass/screen.scss */
   .playlist li {
     font-size: 16px;
   }
 }
 /* Desktop only */
 @media only screen and (min-width: 1030px) {
-  /* line 568, ../sass/screen.scss */
+  /* line 576, ../sass/screen.scss */
   .display {
     width: 66.666%;
   }
 
-  /* line 571, ../sass/screen.scss */
+  /* line 579, ../sass/screen.scss */
   #controls, #secondary-controls {
     width: 15.625%;
   }
 
-  /* line 575, ../sass/screen.scss */
+  /* line 583, ../sass/screen.scss */
   .playlist li {
     font-size: 20px;
   }

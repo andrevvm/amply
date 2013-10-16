@@ -395,7 +395,7 @@ header {
 .playlist {
   position: relative;
   margin: 20px;
-  content: counter-reset(tracks);
+  counter-reset: track-count 0;
   li {
     background: #fff;
     padding: 2%;
@@ -426,6 +426,14 @@ header {
       font-weight: 900;
       vertical-align: middle;
       @include transition(all 200ms);
+      &:before {
+        display: inline-block;
+        margin-right: 1em;
+        content: counter(track-count);
+        counter-increment: track-count;
+        color: $grey;
+        font-weight: 400;
+      }
     }
 
     .time {
