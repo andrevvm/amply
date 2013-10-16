@@ -58,11 +58,11 @@ var MainView = Backbone.View.extend({
             new SearchBarView(), new SearchBarHomeView(), new SearchResultsView(), new TimebarView(), new VolumeView()];
 
         var showCommunicationError = function(error) {
-            bootbox.alert('Sorry, the server could not be contacted. ' + error);
+            bootbox.alert("Sorry, the baby doesn't like that. " + error);
         };
 
         var showServerError = function(error) {
-            bootbox.alert('Sorry, a server error occurred. ' + error);
+            bootbox.alert("Whoops. "  + error);
         };
 
         this.listenTo(Playlist, 'error:communication', showCommunicationError);
@@ -406,7 +406,7 @@ var SearchResultsView = Backbone.View.extend({
             });
             Playlist.add(view.model);
         });
-        $('#Home').hide();
+        $('#Home').css('top','-100%');
         $('.success').addClass('show');
         $('.search-query').val('');
         setTimeout(function() {

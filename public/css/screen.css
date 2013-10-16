@@ -173,8 +173,12 @@ a {
   top: 0;
   left: 0;
   text-align: center;
+  -webkit-transition: all 500ms ease-in-out;
+  -moz-transition: all 500ms ease-in-out;
+  -o-transition: all 500ms ease-in-out;
+  transition: all 500ms ease-in-out;
 }
-/* line 90, ../sass/screen.scss */
+/* line 91, ../sass/screen.scss */
 #Home h1 {
   width: 55px;
   height: 64px;
@@ -183,13 +187,13 @@ a {
   margin: 60px auto 20px;
 }
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  /* line 98, ../sass/screen.scss */
+  /* line 99, ../sass/screen.scss */
   #Home h1 {
     background-image: url(../img/logo@2x.png);
     background-size: 100%;
   }
 }
-/* line 103, ../sass/screen.scss */
+/* line 104, ../sass/screen.scss */
 #Home h2 {
   font-weight: 700;
   letter-spacing: -1px;
@@ -199,7 +203,7 @@ a {
   line-height: 1.2em;
   color: #1e1e3c;
 }
-/* line 113, ../sass/screen.scss */
+/* line 114, ../sass/screen.scss */
 #Home input {
   width: 50%;
   min-width: 450px;
@@ -212,13 +216,13 @@ a {
   -moz-box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
   box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
 }
-/* line 124, ../sass/screen.scss */
+/* line 125, ../sass/screen.scss */
 #Home p {
   font-size: 16px;
   margin: 40px;
 }
 
-/* line 132, ../sass/screen.scss */
+/* line 133, ../sass/screen.scss */
 header {
   background: #FFF;
   color: #111419;
@@ -230,18 +234,18 @@ header {
   z-index: 100;
   overflow: hidden;
 }
-/* line 143, ../sass/screen.scss */
+/* line 144, ../sass/screen.scss */
 header section {
   padding: 0 20px;
 }
-/* line 147, ../sass/screen.scss */
+/* line 148, ../sass/screen.scss */
 header img {
   height: 32px;
   width: auto;
   margin: 12px 17px 12px 30px;
   vertical-align: middle;
 }
-/* line 154, ../sass/screen.scss */
+/* line 155, ../sass/screen.scss */
 header h2 {
   display: inline-block;
   margin-left: 1.041667%;
@@ -250,7 +254,7 @@ header h2 {
   position: relative;
   top: 2px;
 }
-/* line 163, ../sass/screen.scss */
+/* line 164, ../sass/screen.scss */
 header input[type=text] {
   width: 100%;
   padding: 18px 0;
@@ -259,7 +263,7 @@ header input[type=text] {
   background: white;
   color: #111419;
 }
-/* line 172, ../sass/screen.scss */
+/* line 173, ../sass/screen.scss */
 header .success {
   width: 100%;
   height: 100%;
@@ -280,7 +284,7 @@ header .success {
   -o-transition-timing-function: cubic-bezier(0.17, 0.67, 0.29, 0.98);
   transition-timing-function: cubic-bezier(0.17, 0.67, 0.29, 0.98);
 }
-/* line 185, ../sass/screen.scss */
+/* line 186, ../sass/screen.scss */
 header .success.show {
   top: 0px;
   -webkit-transition-duration: 0;
@@ -293,7 +297,7 @@ header .success.show {
   transition-delay: 0;
 }
 
-/* line 193, ../sass/screen.scss */
+/* line 194, ../sass/screen.scss */
 #player {
   width: 100%;
   height: 60px;
@@ -303,19 +307,19 @@ header .success.show {
   z-index: 1000;
 }
 
-/* line 202, ../sass/screen.scss */
+/* line 203, ../sass/screen.scss */
 #player > section {
   margin: 0 20px;
 }
 
-/* line 206, ../sass/screen.scss */
+/* line 207, ../sass/screen.scss */
 #controls {
   margin: 12px 0 0 0;
   width: 49%;
   float: left;
 }
 
-/* line 213, ../sass/screen.scss */
+/* line 214, ../sass/screen.scss */
 #controls button {
   outline: none;
   float: left;
@@ -332,52 +336,52 @@ header .success.show {
   cursor: pointer;
   box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2), inset 0 -1px 0 0 rgba(0, 0, 0, 0.2), inset -1px 0 0 0 rgba(255, 255, 255, 0.05), inset 1px 0 0 0 rgba(0, 0, 0, 0.3);
 }
-/* line 231, ../sass/screen.scss */
+/* line 232, ../sass/screen.scss */
 #controls button:first-child {
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
   box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2), inset 0 -1px 0 0 rgba(0, 0, 0, 0.2), inset -1px 0 0 0 rgba(255, 255, 255, 0.05);
 }
-/* line 238, ../sass/screen.scss */
+/* line 239, ../sass/screen.scss */
 #controls button:last-child {
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px;
   box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2), inset 0 -1px 0 0 rgba(0, 0, 0, 0.2), inset 1px 0 0 0 rgba(0, 0, 0, 0.3);
 }
-/* line 245, ../sass/screen.scss */
+/* line 246, ../sass/screen.scss */
 #controls button:hover {
   background-color: #3e444f;
 }
-/* line 248, ../sass/screen.scss */
+/* line 249, ../sass/screen.scss */
 #controls button:active, #controls button.pressed {
   height: 34px;
   top: 1px;
   background-color: #24282D;
   box-shadow: inset -1px 0 0 0 rgba(0, 0, 0, 0.2), inset 1px 0 0 0 rgba(0, 0, 0, 0.2), inset 0 1px 0 0 rgba(0, 0, 0, 0.2);
 }
-/* line 255, ../sass/screen.scss */
+/* line 256, ../sass/screen.scss */
 #controls button:active span, #controls button.pressed span {
   top: 1px;
 }
-/* line 259, ../sass/screen.scss */
+/* line 260, ../sass/screen.scss */
 #controls button.pressed:active {
   height: 33px;
   top: 2px;
 }
-/* line 262, ../sass/screen.scss */
+/* line 263, ../sass/screen.scss */
 #controls button.pressed:active span {
   top: 2px;
 }
-/* line 266, ../sass/screen.scss */
+/* line 267, ../sass/screen.scss */
 #controls button span {
   position: relative;
 }
-/* line 269, ../sass/screen.scss */
+/* line 270, ../sass/screen.scss */
 #controls button .i-play, #controls button .i-skip {
   left: 2px;
 }
 
-/* line 275, ../sass/screen.scss */
+/* line 276, ../sass/screen.scss */
 .display {
   display: none;
   font-family: "Orator", monospace;
@@ -395,7 +399,7 @@ header .success.show {
   position: relative;
   cursor: pointer;
 }
-/* line 287, ../sass/screen.scss */
+/* line 288, ../sass/screen.scss */
 .display .play-time {
   float: left;
   display: inline-block;
@@ -403,7 +407,7 @@ header .success.show {
   margin-left: 2%;
   font-size: 12px;
 }
-/* line 294, ../sass/screen.scss */
+/* line 295, ../sass/screen.scss */
 .display .track-title {
   float: left;
   display: inline-block;
@@ -416,7 +420,7 @@ header .success.show {
   letter-spacing: -0.1em;
   font-size: 14px;
 }
-/* line 306, ../sass/screen.scss */
+/* line 307, ../sass/screen.scss */
 .display .end-time {
   float: left;
   display: inline-block;
@@ -425,7 +429,7 @@ header .success.show {
   text-align: right;
   font-size: 12px;
 }
-/* line 315, ../sass/screen.scss */
+/* line 316, ../sass/screen.scss */
 .display #timebar-inner {
   border-right: 2px solid blue;
   height: 100%;
@@ -433,14 +437,14 @@ header .success.show {
   z-index: 0;
 }
 
-/* line 323, ../sass/screen.scss */
+/* line 324, ../sass/screen.scss */
 #secondary-controls {
   width: 49%;
   float: right;
   margin: 10px 0;
   line-height: 42px;
 }
-/* line 329, ../sass/screen.scss */
+/* line 330, ../sass/screen.scss */
 #secondary-controls .i-shuffle {
   display: inline-block;
   visibility: hidden;
@@ -450,7 +454,7 @@ header .success.show {
   width: 15%;
   text-align: center;
 }
-/* line 339, ../sass/screen.scss */
+/* line 340, ../sass/screen.scss */
 #secondary-controls #volume {
   width: 78%;
   display: inline-block;
@@ -459,13 +463,13 @@ header .success.show {
   color: white;
   margin-left: 3%;
 }
-/* line 347, ../sass/screen.scss */
+/* line 348, ../sass/screen.scss */
 #secondary-controls #volume .i-volume {
   display: inline-block;
   width: 20%;
   text-align: center;
 }
-/* line 353, ../sass/screen.scss */
+/* line 354, ../sass/screen.scss */
 #secondary-controls #volume .slider {
   display: inline-block;
   height: 16px;
@@ -480,7 +484,7 @@ header .success.show {
   position: relative;
   top: 2px;
 }
-/* line 365, ../sass/screen.scss */
+/* line 366, ../sass/screen.scss */
 #secondary-controls #volume .ui-slider-handle {
   position: absolute;
   z-index: 2;
@@ -500,7 +504,7 @@ header .success.show {
   border-radius: 12px;
   box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2), inset 0 -1px 0 0 rgba(0, 0, 0, 0.2);
 }
-/* line 381, ../sass/screen.scss */
+/* line 382, ../sass/screen.scss */
 #secondary-controls #volume .ui-slider-range {
   background: #FFF;
   position: absolute;
@@ -515,13 +519,13 @@ header .success.show {
   box-shadow: inset 0 -1px 0 0 rgba(255, 255, 255, 0.2), inset 0 1px 0 0 rgba(0, 0, 0, 0.2);
 }
 
-/* line 394, ../sass/screen.scss */
+/* line 395, ../sass/screen.scss */
 .playlist {
   position: relative;
   margin: 20px;
   content: counter-reset(tracks);
 }
-/* line 398, ../sass/screen.scss */
+/* line 399, ../sass/screen.scss */
 .playlist li {
   background: #fff;
   padding: 2%;
@@ -533,18 +537,18 @@ header .success.show {
   -o-transition: font-size 200ms;
   transition: font-size 200ms;
 }
-/* line 406, ../sass/screen.scss */
+/* line 407, ../sass/screen.scss */
 .playlist li:first-child {
   border-top-right-radius: 4px;
   border-top-left-radius: 4px;
 }
-/* line 410, ../sass/screen.scss */
+/* line 411, ../sass/screen.scss */
 .playlist li:last-child {
   border-bottom-right-radius: 4px;
   border-bottom-left-radius: 4px;
   border-bottom: 0;
 }
-/* line 416, ../sass/screen.scss */
+/* line 417, ../sass/screen.scss */
 .playlist li .title {
   display: inline-block;
   margin-left: 2%;
@@ -561,7 +565,7 @@ header .success.show {
   -o-transition: all 200ms;
   transition: all 200ms;
 }
-/* line 430, ../sass/screen.scss */
+/* line 431, ../sass/screen.scss */
 .playlist li .time {
   font-size: 80%;
   display: inline-block;
@@ -571,7 +575,7 @@ header .success.show {
   color: #9b9b9b;
   vertical-align: middle;
 }
-/* line 440, ../sass/screen.scss */
+/* line 441, ../sass/screen.scss */
 .playlist li .list-play {
   border: 0;
   width: 6%;
@@ -593,7 +597,7 @@ header .success.show {
   line-height: 0;
   cursor: pointer;
 }
-/* line 455, ../sass/screen.scss */
+/* line 456, ../sass/screen.scss */
 .playlist li #video {
   width: 100%;
   height: 100%;
@@ -601,7 +605,7 @@ header .success.show {
   left: 0;
   top: 0;
 }
-/* line 461, ../sass/screen.scss */
+/* line 462, ../sass/screen.scss */
 .playlist li #video iframe {
   width: 180%;
   height: 101.5%;
@@ -609,7 +613,7 @@ header .success.show {
   left: -38%;
   margin-top: 0;
 }
-/* line 468, ../sass/screen.scss */
+/* line 469, ../sass/screen.scss */
 .playlist li #video:after {
   content: "";
   width: 100%;
@@ -621,7 +625,7 @@ header .success.show {
   background-size: 100%;
   z-index: 10;
 }
-/* line 481, ../sass/screen.scss */
+/* line 482, ../sass/screen.scss */
 .playlist li .list-play .img {
   display: inline-block;
   width: 100%;
@@ -635,7 +639,7 @@ header .success.show {
   -o-border-radius: 200px;
   border-radius: 200px;
 }
-/* line 489, ../sass/screen.scss */
+/* line 490, ../sass/screen.scss */
 .playlist li .list-play .img:after {
   content: "";
   width: 100%;
@@ -655,11 +659,11 @@ header .success.show {
   -o-border-radius: 200px;
   border-radius: 200px;
 }
-/* line 502, ../sass/screen.scss */
+/* line 503, ../sass/screen.scss */
 .playlist li .list-play .img:hover:after {
   background: rgba(0, 0, 0, 0);
 }
-/* line 508, ../sass/screen.scss */
+/* line 509, ../sass/screen.scss */
 .playlist li .list-play img {
   display: block;
   width: 100%;
@@ -673,66 +677,66 @@ header .success.show {
   position: relative;
   z-index: 10;
 }
-/* line 518, ../sass/screen.scss */
+/* line 519, ../sass/screen.scss */
 .playlist li.playing .list-play {
   width: 20%;
 }
-/* line 521, ../sass/screen.scss */
+/* line 522, ../sass/screen.scss */
 .playlist li.playing .title {
   width: 62%;
   margin-left: 3%;
   margin-right: 2%;
   font-size: 1.2em;
 }
-/* line 528, ../sass/screen.scss */
+/* line 529, ../sass/screen.scss */
 .playlist li.playing.playTrack .title {
   color: #111419;
 }
-/* line 531, ../sass/screen.scss */
+/* line 532, ../sass/screen.scss */
 .playlist li.playing.playTrack img {
   opacity: 0;
 }
-/* line 535, ../sass/screen.scss */
+/* line 536, ../sass/screen.scss */
 .playlist li.playing.playTrack .img:after,
 .playlist li.playing.playTrack .img:before {
   display: none;
 }
-/* line 542, ../sass/screen.scss */
+/* line 543, ../sass/screen.scss */
 .playlist li.ytv .list-play .img {
   background-size: auto 140%;
 }
 
 /* Small desktop */
 @media only screen and (min-width: 640px) {
-  /* line 551, ../sass/screen.scss */
+  /* line 552, ../sass/screen.scss */
   .display {
     display: block;
     width: 52%;
   }
 
-  /* line 555, ../sass/screen.scss */
+  /* line 556, ../sass/screen.scss */
   #controls, #secondary-controls {
     width: 22.9%;
   }
 
-  /* line 559, ../sass/screen.scss */
+  /* line 560, ../sass/screen.scss */
   .playlist li {
     font-size: 16px;
   }
 }
 /* Desktop only */
 @media only screen and (min-width: 1030px) {
-  /* line 567, ../sass/screen.scss */
+  /* line 568, ../sass/screen.scss */
   .display {
     width: 66.666%;
   }
 
-  /* line 570, ../sass/screen.scss */
+  /* line 571, ../sass/screen.scss */
   #controls, #secondary-controls {
     width: 15.625%;
   }
 
-  /* line 574, ../sass/screen.scss */
+  /* line 575, ../sass/screen.scss */
   .playlist li {
     font-size: 20px;
   }
