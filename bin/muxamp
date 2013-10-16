@@ -7,5 +7,5 @@ var app = muxamp.getApplication(),
     port = config.get('muxamp:port');
     ip = config.get('muxamp:ip')
 app.listen(port, ip, function() {
-    console.log("Server started, port", port);
+    console.log("Server started, port", port + " ip " + ip);
 });
