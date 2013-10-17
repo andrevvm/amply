@@ -557,20 +557,17 @@ header {
 
 footer {
   text-align: center;
-  font-size: 12px;
+  font-size: 24px;
   color: #D4D4D4;
-  margin: 50px 0 20px;
+  margin: 20px 20px 10px;
   @include transition(color 200ms ease-in-out);
-  &:hover {
-    color: $grey;
-    a {
-      color: $grey;
-    }
-  }
-  a {
+  span {
     color: #D4D4D4;
-    text-decoration: underline;
+    cursor: pointer;
     @include transition(color 200ms ease-in-out);
+    &:hover {
+      color: $blue;
+    }
   }
 }
 

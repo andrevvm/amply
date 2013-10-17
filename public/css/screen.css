@@ -718,63 +718,59 @@ header .success.show {
 /* line 558, ../sass/screen.scss */
 footer {
   text-align: center;
-  font-size: 12px;
+  font-size: 24px;
   color: #D4D4D4;
-  margin: 50px 0 20px;
+  margin: 20px 20px 10px;
   -webkit-transition: color 200ms ease-in-out;
   -moz-transition: color 200ms ease-in-out;
   -o-transition: color 200ms ease-in-out;
   transition: color 200ms ease-in-out;
 }
 /* line 564, ../sass/screen.scss */
-footer:hover {
-  color: #9b9b9b;
-}
-/* line 566, ../sass/screen.scss */
-footer:hover a {
-  color: #9b9b9b;
-}
-/* line 570, ../sass/screen.scss */
-footer a {
+footer span {
   color: #D4D4D4;
-  text-decoration: underline;
+  cursor: pointer;
   -webkit-transition: color 200ms ease-in-out;
   -moz-transition: color 200ms ease-in-out;
   -o-transition: color 200ms ease-in-out;
   transition: color 200ms ease-in-out;
 }
+/* line 568, ../sass/screen.scss */
+footer span:hover {
+  color: #1100e4;
+}
 
 /* Small desktop */
 @media only screen and (min-width: 640px) {
-  /* line 579, ../sass/screen.scss */
+  /* line 576, ../sass/screen.scss */
   .display {
     display: block;
     width: 52%;
   }
 
-  /* line 583, ../sass/screen.scss */
+  /* line 580, ../sass/screen.scss */
   #controls, #secondary-controls {
     width: 22.9%;
   }
 
-  /* line 587, ../sass/screen.scss */
+  /* line 584, ../sass/screen.scss */
   .playlist li {
     font-size: 16px;
   }
 }
 /* Desktop only */
 @media only screen and (min-width: 1030px) {
-  /* line 595, ../sass/screen.scss */
+  /* line 592, ../sass/screen.scss */
   .display {
     width: 66.666%;
   }
 
-  /* line 598, ../sass/screen.scss */
+  /* line 595, ../sass/screen.scss */
   #controls, #secondary-controls {
     width: 15.625%;
   }
 
-  /* line 602, ../sass/screen.scss */
+  /* line 599, ../sass/screen.scss */
   .playlist li {
     font-size: 20px;
   }
