@@ -89,8 +89,8 @@ a {
     text-align: center;
     @include transition(top 500ms ease-in-out);
     h1 {
-      width: 55px;
-      height: 64px;
+      width: 64px;
+      height: 76px;
       background: url(../img/logo.png) no-repeat top left;
       text-indent: -9000px;
       margin: 60px auto 20px;
@@ -105,7 +105,7 @@ a {
       font-weight: 700;
       letter-spacing: -1px;
       width: 500px;
-      margin: 30px auto 40px;
+      margin: 20px auto 50px;
       font-size: 52px;
       line-height: 1.2em;
       color: $darkest_blue;
@@ -119,12 +119,11 @@ a {
       font-size: 20px;
       text-align: center;
       border: 0;
-      @include box-shadow(inset 0px 1px 2px 0px rgba(0,0,0,0.20));
     }
 
     p {
       font-size: 16px;
-      margin: 40px;
+      margin: 50px;
     }
 }
 
