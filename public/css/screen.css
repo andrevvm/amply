@@ -556,7 +556,7 @@ header .success.show {
   overflow: hidden;
   text-overflow: ellipsis;
   width: 79%;
-  color: #1100e4;
+  color: #111419;
   line-height: 1.2em;
   font-weight: 400;
   vertical-align: middle;
@@ -699,7 +699,7 @@ header .success.show {
 }
 /* line 537, ../sass/screen.scss */
 .playlist li.playing.playTrack .title {
-  color: #111419;
+  color: #1100e4;
 }
 /* line 540, ../sass/screen.scss */
 .playlist li.playing.playTrack img {
