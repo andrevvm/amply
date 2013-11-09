@@ -9,15 +9,16 @@ $grey: #9B9B9B;
 $light-grey: #E9E9E9;
 $button-grey: #383D47;
 $button-hover: #3E444F;
-$blue: #1100E4;
+$blue: #4C0BFF;
 $darkest_blue: #1E1E3C;
-$red: #EB2D3E;
+$red: #ff3333;
 $green: #53C896;
 
 body {
   background: $light-grey;
-  padding: 0 0 140px;
-  font-family: Lato, "Helvetica Neue", Helvetica, sans-serif;
+  padding: 60px 0 80px;
+  font-family: Orator, courier, monospace;
+  text-transform: lowercase;
 }
 
 input[type=text] {
@@ -26,8 +27,8 @@ input[type=text] {
   font-size: 16px;
   @include border-radius(5px);
   @include box-sizing(border-box);
-  font-family: Lato, "Helvetica Neue", Helvetica, sans-serif;
-  font-weight: 700;
+  font-family: Orator, courier, monospace;
+  text-transform: lowercase;
   color: $black;
   text-align: center;
   outline: none;
@@ -42,8 +43,11 @@ a {
 }
 
 .bootbox.modal {
+  font-family: Lato, Helvetica, sans-serif;
+  text-transform: none;
+  font-weight: 400;
   position: fixed;
-  bottom: 60px;
+  top: 0px;
   left: 0;
   z-index: 100;
   background-color: $red;
@@ -74,7 +78,7 @@ a {
     }
   }
   &[aria-hidden="true"] {
-    bottom: 0;
+    top: -60px;
   }
 } 
 
@@ -102,21 +106,23 @@ a {
         }
     }
     h2 {
+      font-family: 'Lato', Helvetica, sans-serif;
       font-weight: 700;
       letter-spacing: -1px;
-      width: 500px;
-      margin: 20px auto 50px;
+      width: 640px;
+      margin: 40px auto 50px;
       font-size: 52px;
       line-height: 1.2em;
       color: $darkest_blue;
+      text-transform: none;
     }
 
     input {
-      width: 50%;
+      width: 40%;
       min-width: 450px;
       margin: 0 auto;
       background: white;
-      font-size: 20px;
+      font-size: 16px;
       text-align: center;
       border: 0;
     }
@@ -136,7 +142,7 @@ header {
   height: 60px;
   box-shadow: 0 0 5px 0 rgba(0,0,0,0.15);
   position: fixed;
-  bottom: 60px;
+  top: 0px;
   z-index: 100;
   overflow: hidden;
 
@@ -179,7 +185,7 @@ header {
     font-size: 14px;
     line-height: 60px;
     position: absolute;
-    top: 60px;
+    top: -60px;
     @include transition(top 300ms);
     @include transition-timing-function(cubic-bezier(.17,.67,.29,.98));
     &.show {
@@ -313,7 +319,7 @@ header {
   }
 
   #timebar-inner{
-    border-right: 2px solid blue;
+    border-right: 2px solid $blue;
     height: 100%;
     position: relative;
     z-index: 0;
@@ -337,7 +343,7 @@ header {
   }
 
   #volume {
-    width: 78%;
+    width: 76%;
     display: inline-block;
     position: relative;
     top: -1px;
@@ -353,7 +359,7 @@ header {
     .slider {
       display: inline-block;
       height: 16px;
-      width: 76%;
+      width: 72%;
       background: #505050;
       box-shadow: inset 0 -1px 0 0 rgba(255,255,255,0.2),
                   inset 0 1px 0 0 rgba(0,0,0,0.2);
@@ -422,10 +428,12 @@ header {
       width: 79%;
       color: $black;
       line-height: 1.2em;
+      letter-spacing: -1px;
       font-weight: 400;
       vertical-align: middle;
       @include transition(all 200ms);
       &:before {
+        font-size: 0.82em;
         display: inline-block;
         margin-right: 1em;
         content: counter(track-count);
