@@ -128,8 +128,10 @@ a {
     }
 
     p {
+      font-family: Lato, Helvetica, sans-serif;
       font-size: 16px;
       margin: 50px;
+      text-transform: none;
     }
 }
 
@@ -401,12 +403,15 @@ header {
   position: relative;
   margin: 20px;
   counter-reset: track-count 0;
+  cursor: -webkit-grab;
+  &:active {
+    cursor: -webkit-grabbing;
+  }
   li {
     background: #fff;
     padding: 2%;
     border-bottom: 1px solid $light-grey;
     font-size: 12px;
-    cursor: pointer;
 
     @include transition(font-size 200ms);
     &:first-child {
