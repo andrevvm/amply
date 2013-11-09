@@ -353,7 +353,7 @@ var PlaylistView = Backbone.View.extend({
         }
 
         setTimeout(function() {
-            $('body').animate({scrollTop:$('li.playing',$table).offset().top - 20}, 600);
+            $('body').animate({scrollTop:$('li.playing',$table).offset().top + 60}, 600);
         },300);
 
         $(this.player).find('.track-title')
