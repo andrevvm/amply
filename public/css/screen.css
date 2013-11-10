@@ -783,6 +783,7 @@ header .success.show {
 
 /* line 628, ../sass/screen.scss */
 .trash {
+  opacity: 0;
   position: fixed;
   right: 20px;
   bottom: -20px;
@@ -801,52 +802,56 @@ header .success.show {
   -o-transition-timing-function: cubic-bezier(0.17, 0.67, 0.29, 0.98);
   transition-timing-function: cubic-bezier(0.17, 0.67, 0.29, 0.98);
 }
-/* line 640, ../sass/screen.scss */
+/* line 641, ../sass/screen.scss */
 .trash.show {
   bottom: 80px;
 }
-/* line 644, ../sass/screen.scss */
+/* line 645, ../sass/screen.scss */
 .trash:hover, .trash.Active {
   background-color: #ff6666;
 }
+/* line 648, ../sass/screen.scss */
+.trash:last-child {
+  opacity: 1;
+}
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  /* line 650, ../sass/screen.scss */
+  /* line 654, ../sass/screen.scss */
   .trash {
     background-image: url(../img/trash@2x.png);
   }
 }
 /* Small desktop */
 @media only screen and (min-width: 640px) {
-  /* line 657, ../sass/screen.scss */
+  /* line 661, ../sass/screen.scss */
   .display {
     display: block;
     width: 52%;
   }
 
-  /* line 661, ../sass/screen.scss */
+  /* line 665, ../sass/screen.scss */
   #controls, #secondary-controls {
     width: 22.9%;
   }
 
-  /* line 665, ../sass/screen.scss */
+  /* line 669, ../sass/screen.scss */
   .playlist li {
     font-size: 16px;
   }
 }
 /* Desktop only */
 @media only screen and (min-width: 1030px) {
-  /* line 673, ../sass/screen.scss */
+  /* line 677, ../sass/screen.scss */
   .display {
     width: 66.666%;
   }
 
-  /* line 676, ../sass/screen.scss */
+  /* line 680, ../sass/screen.scss */
   #controls, #secondary-controls {
     width: 15.625%;
   }
 
-  /* line 680, ../sass/screen.scss */
+  /* line 684, ../sass/screen.scss */
   .playlist li {
     font-size: 20px;
   }

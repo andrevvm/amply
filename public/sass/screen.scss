@@ -626,6 +626,7 @@ header {
 }
 
 .trash {
+  opacity: 0;
   position: fixed;
   right: 20px;
   bottom: -20px;
@@ -643,6 +644,9 @@ header {
   &:hover,
   &.Active {
     background-color: $red;
+  }
+  &:last-child {
+    opacity: 1;
   }
 }
 
