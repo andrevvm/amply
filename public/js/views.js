@@ -428,7 +428,7 @@ var SearchResultsView = Backbone.View.extend({
             });
             Playlist.add(view.model);
         });
-        $('#Home').css('top','-100%');
+        $('#Home').addClass('hide');
         $('.success').addClass('show');
         $('.search-query').val('');
         setTimeout(function() {
