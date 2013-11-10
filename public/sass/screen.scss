@@ -14,6 +14,8 @@ $darkest_blue: #1E1E3C;
 $red: #ff3333;
 $green: #53C896;
 
+$timing: cubic-bezier(.17,.67,.29,.98);
+
 body {
   background: $light-grey;
   padding: 60px 0 80px;
@@ -61,7 +63,7 @@ a {
   line-height: 1.5;
   font-size: 14px;
   @include transition(all 300ms);
-  @include transition-timing-function(cubic-bezier(.17,.67,.29,.98));
+  @include transition-timing-function($timing);
   .modal-body {
     display: inline-block;
   }
@@ -189,7 +191,7 @@ header {
     position: absolute;
     top: -60px;
     @include transition(top 300ms);
-    @include transition-timing-function(cubic-bezier(.17,.67,.29,.98));
+    @include transition-timing-function($timing);
     &.show {
       top: 0px;
       @include transition-duration(0);
@@ -399,14 +401,22 @@ header {
   }
 }
 
+.ui-sortable-helper {
+  z-index: 800 !important;
+}
+
 .playlist {
   position: relative;
   margin: 20px;
   counter-reset: track-count 0;
-  cursor: -webkit-grab;
-  &:active {
+  &:hover {
+    cursor: -webkit-grab;
+  }
+
+  .ui-sortable-helper {
     cursor: -webkit-grabbing;
   }
+
   li {
     background: #fff;
     padding: 2%;
@@ -436,6 +446,7 @@ header {
       letter-spacing: -1px;
       font-weight: 400;
       vertical-align: middle;
+      cursor: pointer;
       @include transition(all 200ms);
       &:before {
         font-size: 0.82em;
@@ -445,6 +456,7 @@ header {
         counter-increment: track-count;
         color: $grey;
         font-weight: 400;
+        cursor: pointer;
       }
     }
 
@@ -565,6 +577,33 @@ header {
       }
     }
   }
+}
+
+.trash {
+  position: fixed;
+  right: 20px;
+  bottom: -20px;
+  background: $black url('../img/trash.png') no-repeat center;
+  border-radius: 35px;
+  width: 70px;
+  height: 70px;
+  z-index: 900;
+  @include transition(bottom 200ms);
+  @include transition-timing-function($timing);
+  &.show {
+    bottom: 80px;
+  }
+  &:hover,
+  &.Active {
+    background-color: $red;
+  }
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+    .trash {
+      background-image: url(../img/trash@2x.png);
+      background-size: 30px;
+    }
 }
 
 /* Small desktop */

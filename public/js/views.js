@@ -158,7 +158,7 @@ var TrackView = Backbone.View.extend({
         var playIcon    = '<div class="list-play"><span class="img" style="background-image:url(' + this.model.get('artwork') + ')"><img src="img/play-icon.png"/></span></div>';
         var title       = '<span class="title title-cell">' + this.model.get('mediaName') + '</span>';
         var seconds = secondsToString(this.model.get('duration'));
-        var duration    = '<span class="time duration-cell">' + seconds + '</span>';
+        var duration    = '<span class="time duration-cell">' + seconds + '</span><div class="trash"></div>';
 
         var innerHtml = playIcon + title + duration;
         this.$el.html(innerHtml);
@@ -173,6 +173,7 @@ var TrackView = Backbone.View.extend({
 var PlaylistTrackView = TrackView.extend({
     events: {
         'click': 'play',
+        'mouseup .trash': 'removeFromPlaylist'
     },
     play: function() {
         var playing = Playlist.isPlaying(), paused = Playlist.isPaused();
@@ -182,6 +183,11 @@ var PlaylistTrackView = TrackView.extend({
         } else {
             Playlist.goToTrack(index, true);
         }
+    },
+    removeFromPlaylist: function() {
+        this.remove();
+        Playlist.remove(this.model);
+        $('.trash').removeClass('Active');
     }
 });
 
@@ -299,6 +305,8 @@ var PlaylistView = Backbone.View.extend({
 
         var playlistView = this;
         var startPos;
+        var trashActive;
+
         $(this.table).sortable({
             helper: function(event, ui) {
                 try {
@@ -315,14 +323,24 @@ var PlaylistView = Backbone.View.extend({
             },
             start: function(event, ui) {
                 startPos =ui.item.index();
+                $(".trash").addClass('show');
+                $(".trash").hover(function (){
+                    $(".trash").addClass('Active');
+                }, function() {
+                    $(".trash").removeClass('Active');
+                });
             },
-            tolerance: 'pointer',
             stop: function(event, ui) {
                 var pos = ui.item.index();
-                Playlist.moveTrack(startPos, pos);
+                if (trashActive) {
+                    console.log(playlistView);
+                    Playlist.remove(playlistView);
+                } else {
+                    Playlist.moveTrack(startPos, pos);
+                }
+                $(".trash").removeClass('show');
             }
         });
-
         Playlist.on('tracks:new', this.reset, this);
         Playlist.on('tracks', this.append, this);
         Playlist.on('id', this.updateList, this);
