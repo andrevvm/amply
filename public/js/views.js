@@ -380,14 +380,13 @@ var PlaylistView = Backbone.View.extend({
             return false;
         }
 
-        $('title').text($(this.table).find('.playing .title-cell').text() + " on Amply");
-
         setTimeout(function() {
             $('body').animate({scrollTop:$('li.playing',$table).offset().top - 80}, 600);
         },300);
     },
     playCurrentTrack: function() {
         $(this.table).find('li.playing').addClass('playTrack');
+        $('title').text($(this.table).find('.playing .title-cell').text() + " on Amply");
         this.updateFavicon('img/favicon.ico');
     },
     pauseCurrentTrack: function() {
