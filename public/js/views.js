@@ -386,9 +386,11 @@ var PlaylistView = Backbone.View.extend({
     },
     playCurrentTrack: function() {
         $(this.table).find('li.playing').addClass('playTrack');
+        this.updateFavicon('img/favicon.ico');
     },
     pauseCurrentTrack: function() {
         $(this.table).find('li.playing').removeClass('playTrack');
+        this.updateFavicon('img/favicon-gray.ico');
     },
     updateList: function() {
         var count = Playlist.size();
@@ -405,6 +407,18 @@ var PlaylistView = Backbone.View.extend({
     },
     show: function() {
         $("#playlist-tab").tab('show');
+    },
+    updateFavicon: function(src) {
+        var link = document.createElement('link'),
+        oldLink = document.getElementById('dynamic-favicon');
+        link.id = 'dynamic-favicon';
+        link.rel = 'shortcut icon';
+        link.href = src;
+        if (oldLink) {
+            document.head.removeChild(oldLink);
+        }
+        document.head.appendChild(link);
+        console.log(link);
     }
 });
 
