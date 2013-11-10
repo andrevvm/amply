@@ -187,7 +187,6 @@ var PlaylistTrackView = TrackView.extend({
     removeFromPlaylist: function() {
         this.remove();
         Playlist.remove(this.model);
-        $('.trash').removeClass('Active');
     }
 });
 
@@ -370,15 +369,20 @@ var PlaylistView = Backbone.View.extend({
             this.playCurrentTrack();
         }
 
-        setTimeout(function() {
-            $('body').animate({scrollTop:$('li.playing',$table).offset().top - 80}, 600);
-        },300);
-
         $(this.player).find('.track-title')
             .text($(this.table).find('.playing .title-cell').text());
 
         $(this.player).find('.end-time')
             .text($(this.table).find('.playing .duration-cell').text());
+
+        if($('.trash').hasClass('Active')) {
+            $('.trash').removeClass('Active');
+            return false;
+        }
+
+        setTimeout(function() {
+            $('body').animate({scrollTop:$('li.playing',$table).offset().top - 80}, 600);
+        },300);
     },
     playCurrentTrack: function() {
         $(this.table).find('li.playing').addClass('playTrack');
