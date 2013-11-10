@@ -414,12 +414,11 @@ var PlaylistView = Backbone.View.extend({
         oldLink = document.getElementById('dynamic-favicon');
         link.id = 'dynamic-favicon';
         link.rel = 'shortcut icon';
-        link.href = src;
+        link.href = src + "?" + (((Math.random()) * 0x10000) | 0).toString(16).substring(1);
         if (oldLink) {
             document.head.removeChild(oldLink);
         }
         document.head.appendChild(link);
-        console.log(link);
     }
 });
 
