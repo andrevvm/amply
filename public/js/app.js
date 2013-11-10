@@ -1,3 +1,5 @@
+document.head || (document.head = document.getElementsByTagName('head')[0]);
+
 soundManager.debugMode = false;
 soundManager.flashVersion = 9;
 soundManager.preferFlash = false;
