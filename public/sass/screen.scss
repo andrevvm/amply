@@ -100,6 +100,7 @@ a {
       background: url(../img/logo.png) no-repeat top left;
       text-indent: -9000px;
       margin: 60px auto 20px;
+      background-size: 100%;
     }
     @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
         h1 {
@@ -622,6 +623,10 @@ header {
         background-size: auto 140%;
       }
     }
+
+    &:first-child .trash {
+      opacity: 1;
+    }
   }
 }
 
@@ -644,9 +649,6 @@ header {
   &:hover,
   &.Active {
     background-color: $red;
-  }
-  &:last-child {
-    opacity: 1;
   }
 }
 
