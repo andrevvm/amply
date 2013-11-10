@@ -157,6 +157,8 @@ var TrackView = Backbone.View.extend({
     render: function() {
         var playIcon    = '<div class="list-play"><span class="img" style="background-image:url(' + this.model.get('artwork') + ')"><img src="img/play-icon.png"/></span></div>';
         var title       = '<span class="title title-cell">' + this.model.get('mediaName') + '</span>';
+        var link        = '<a href='+ this.model.get('permalink') +' class="track-link" target="_blank"></a>';
+        var title       = '<span class="title title-cell">' + this.model.get('mediaName') + '</span>' + link;
         var seconds = secondsToString(this.model.get('duration'));
         var duration    = '<span class="time duration-cell">' + seconds + '</span><div class="trash"></div>';
 
@@ -175,7 +177,10 @@ var PlaylistTrackView = TrackView.extend({
         'click': 'play',
         'mouseup .trash': 'removeFromPlaylist'
     },
-    play: function() {
+    play: function(event) {
+        if($(event.target).hasClass('track-link')) {
+            return true;
+        }
         var playing = Playlist.isPlaying(), paused = Playlist.isPaused();
         var index = this.$el.closest('li').index();
         if(playing && Playlist.currentTrack == index) {

@@ -328,6 +328,7 @@ header {
     letter-spacing: -0.1em;
     font-size: 14px;
   }
+
   .end-time {
     float: left;
     display: inline-block;
@@ -437,6 +438,7 @@ header {
     padding: 2%;
     border-bottom: 1px solid $light-grey;
     font-size: 12px;
+    position: relative;
 
     @include transition(font-size 200ms);
     &:first-child {
@@ -462,6 +464,7 @@ header {
       font-weight: 400;
       vertical-align: middle;
       cursor: pointer;
+      position: relative;
       @include transition(all 200ms);
       &:before {
         font-size: 0.82em;
@@ -473,6 +476,34 @@ header {
         font-weight: 400;
         cursor: pointer;
       }
+    }
+
+    .track-link {
+      display: none;
+      width: 13px;
+      height: 12px;
+      top: 8px;
+      background: url(../img/link.png) no-repeat top left;
+      background-size: 100%;
+      &:hover {
+        background-position: bottom left;
+      }
+      position: absolute;
+      right: 12%;
+      top: 50%;
+      margin-top: -7px;
+    }
+
+    &:hover {
+      .track-link {
+        display: inline-block;
+      }
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+        .track-link {
+          background-image: url(../img/link@2x.png);
+        }
     }
 
     .time {
@@ -599,6 +630,7 @@ header {
   right: 20px;
   bottom: -20px;
   background: $black url('../img/trash.png') no-repeat center;
+  background-size: 15px;
   border-radius: 35px;
   width: 70px;
   height: 70px;
@@ -617,7 +649,6 @@ header {
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
     .trash {
       background-image: url(../img/trash@2x.png);
-      background-size: 30px;
     }
 }
 
